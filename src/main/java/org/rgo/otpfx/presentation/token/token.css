@@ -1,0 +1,54 @@
+AnchorPane {
+
+}
+
+#otpPaneContainer {
+    -fx-vgap: 8;
+    -fx-hgap: 4;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+#otpPane {
+    -fx-border-color: transparent;
+    ;
+    -fx-spacing: 15;
+}
+
+.otp-record {
+    -fx-border-color: lightgray;
+    -fx-border-radius: 10px;
+    -fx-spacing: 15;
+}
+
+.otp-now {
+    -fx-font-size: 30px;
+    -fx-alignment: center-right;
+}
+
+.icons {
+    -fx-font-family: FontAwesome;
+    -fx-font-size: 16px;
+    -fx-padding: 5 10 5 10;
+    -fx-spacing: 1;
+    -fx-alignment: center-right;
+    -fx-pref-width: 420px;
+    -fx-background-color: black;
+}
+
+.icons-small {
+    -fx-font-family: FontAwesome;
+    -fx-font-size: 10px;
+    -fx-padding: 5 10 5 10;
+    -fx-spacing: 2;
+
+}
+
+.icons Button {
+    -fx-text-fill: azure;
+    -fx-background-color: black;
+}
+#message {
+    -fx-text-fill: aqua;
+    -fx-alignment: center-left;
+}
