@@ -3,9 +3,12 @@ package org.rgo.otpfx;
 import com.airhacks.afterburner.injection.InjectionProvider;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.rgo.otpfx.business.boundary.TokenRepository;
+import org.rgo.otpfx.model.Token;
 import org.rgo.otpfx.presentation.token.TokenView;
 
 public class App extends Application {
@@ -21,7 +24,10 @@ public class App extends Application {
     private static void cli(String arg) {
         switch (arg) {
         case "-f":
-            String now = new TokenRepository().getAll().get(0).now();
+            TokenRepository tokenRepository = new TokenRepository();
+            Token token = tokenRepository.getAll().get(0);
+            String now = token.now();
+            tokenRepository.save(token);
             System.out.println(now);
             break;
         }
@@ -35,7 +41,7 @@ public class App extends Application {
         TokenView appView = new TokenView();
         Scene scene = new Scene(appView.getView());
         scene.getStylesheets().add(uri);
-        stage.setTitle("otpfx.fx v1.0-SNAPSHOT");
+        stage.setTitle("otpfx v1.0-SNAPSHOT");
         stage.setScene(scene);
         stage.show();
     }
