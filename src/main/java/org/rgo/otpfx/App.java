@@ -3,8 +3,7 @@ package org.rgo.otpfx;
 import com.airhacks.afterburner.injection.InjectionProvider;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.rgo.otpfx.business.boundary.TokenRepository;
@@ -37,12 +36,11 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Font.loadFont(getClass().getResource("awesome.ttf").toExternalForm(), 12);
-        final String uri = getClass().getResource("app.css").toExternalForm();
-        TokenView appView = new TokenView();
-        Scene scene = new Scene(appView.getView());
-        scene.getStylesheets().add(uri);
+        Scene scene = new Scene(new TokenView().getView());
+        scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
         stage.setTitle("otpfx v1.0-SNAPSHOT");
         stage.setScene(scene);
+        stage.getIcons().add(new Image("file://" + getClass().getResource("key.svg").getPath()));
         stage.show();
     }
 

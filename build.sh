@@ -1,4 +1,4 @@
 #!/bin/bash
 
-JAVA_HOME=$SUN_JDK_HOME
+JAVA_HOME=/opt/jdk-9
 mvn -e clean install

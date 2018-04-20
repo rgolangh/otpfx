@@ -2,6 +2,7 @@ package org.rgo.otpfx.presentation.token;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -10,6 +11,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
@@ -162,7 +164,16 @@ public class TokenPresenter implements Initializable {
         // Traditional way to get the response value.
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
-            URI uri = URI.create(result.get());
+            URI uri = null;
+            try {
+                uri = URI.create(result.get());
+            } catch (Exception e) {
+                dialog.setOnCloseRequest(new EventHandler<DialogEvent>() {
+                    @Override public void handle(DialogEvent event) {
+                        //FIXME handle wrong uri here
+                    }
+                });
+            }
             boolean hotp = uri.getHost().equalsIgnoreCase("hotp");
             Map<String, String> params = Stream.of(uri.getQuery().split("&"))
                     .filter(Objects::nonNull)

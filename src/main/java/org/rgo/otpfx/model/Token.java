@@ -13,7 +13,7 @@ public class Token implements Serializable {
     private String name;
     private transient Totp otp;
     private final SerializedClock clock;
-    private String secret;
+    private final String secret;
 
     public Token(String name, boolean hotp) {
         this(name, Base32.random(), hotp);
@@ -58,10 +58,6 @@ public class Token implements Serializable {
 
         private static final long serialVersionUID = 247992369401684856L;
         private int counter;
-
-        private SerializedCounter(int counter) {
-            this.counter = counter;
-        }
 
         private SerializedCounter() {
         }
