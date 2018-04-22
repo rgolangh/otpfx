@@ -1,6 +1,6 @@
 # otpfx
 
-<img src=screenshort.png>
+<img src=screenshot.png>
 
 An otp UI written using javafx, supports TOTP and HOTP.
 
